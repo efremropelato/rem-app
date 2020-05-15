@@ -1,31 +1,48 @@
+// app/javascript/App.js
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Link
 } from "react-router-dom";
 import Routes from './Routes';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import {
+  Navbar, NavbarBrand, Nav,
+  NavItem,
+  NavLink, UncontrolledDropdown, ButtonGroup, ButtonDropdown, Dropdown, DropdownToggle, DropdownMenu, DropdownItem
+} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default class App extends React.Component {
   render() {
-    console.log('app being mounted');
+    console.count("Render App")
     return (
-      <Router>
-        <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/hello_world">Hello World</Link>
-          </li>
-          <li>
-            <Link to="/bye_world">Bye World</Link>
-          </li>
-        </ul>
-        <hr />
-        </div>
-        <Routes />
-      </Router>
+      <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false} />
+        <Navbar color="light" light expand="md" className="clearfix">
+          <NavbarBrand href="/">{this.props.appName}</NavbarBrand>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink href="/">Home</NavLink>
+            </NavItem>
+          </Nav>
+        </Navbar>
+        <Router>
+          <Routes />
+        </Router>
+      </div >
     );
   }
 }
