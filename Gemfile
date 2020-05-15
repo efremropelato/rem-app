@@ -54,3 +54,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'react_on_rails'
+gem 'mini_racer', platforms: :ruby

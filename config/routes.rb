@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
+      resources :houses, only: [:index, :create, :show, :update, :destroy]
+      resources :complex_buildings, only: [:index, :create, :show, :update, :destroy]
+      resources :commecial_units, only: [:index, :create, :show, :update, :destroy]
+    end
+  end
+  root 'hello_world#index'
+  get 'hello_world', to: 'hello_world#index'
+  get 'bye_world', to: 'hello_world#index'
 end
