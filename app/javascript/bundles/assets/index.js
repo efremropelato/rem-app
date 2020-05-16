@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {map,orderBy} from 'lodash';
+import NumberFormat from 'react-number-format';
+import moment from 'moment';
 
 import { Container, Table, Button, ButtonGroup, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
@@ -10,7 +12,9 @@ export default class AssetsList extends React.Component {
     super(props);
     this.state = { assets: [], dropdownOpen: false };
 
-    this.toggle = this.toggle.bind(this)
+    this.toggle = this.toggle.bind(this);
+
+    moment.locale(); 
   }
 
   componentDidMount() {
@@ -26,7 +30,6 @@ export default class AssetsList extends React.Component {
   handleDelete = (assetId, assetType) => {
     fetch(`/api/v1/${assetType}/${assetId}`, { method: 'delete' }).
       then(() => {
-        toast.success("Asset deleted successfully!");
         this.fetchAssetsList();
       });
   }
@@ -50,7 +53,7 @@ export default class AssetsList extends React.Component {
       }
     }
     return (
-      <Container>
+      <Container fluid={true}>
         <span className="clearfix">
           <h3 className="float-left">All Assets</h3>
           <ButtonDropdown isOpen={dropdownOpen} toggle={this.toggle} direction="left" className="float-right">
@@ -74,6 +77,8 @@ export default class AssetsList extends React.Component {
               <th>Address</th>
               <th>SQMT</th>
               <th>Price (€)</th>
+              <th>Created at</th>
+              <th>Updated at</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -89,7 +94,9 @@ export default class AssetsList extends React.Component {
                     <td>{asset.owner}</td>
                     <td>{asset.address}</td>
                     <td>{asset.sqmt}</td>
-                    <td>{asset.price}</td>
+                    <td><NumberFormat value={asset.price} displayType={'text'} fixedDecimalScale={true} thousandSeparator={'.'} decimalSeparator={','} suffix={' €'} /></td>
+                    <td>{moment(asset.created_at).format('llll')}</td>
+                    <td>{moment(asset.updated_at).format('llll')}</td>
                     <td>
                       <ButtonGroup>
                       <Link className="btn btn-primary btn-sm" to={`/${assetType(asset.type)}/${asset.id}`}>
