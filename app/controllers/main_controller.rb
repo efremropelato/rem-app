@@ -4,6 +4,6 @@ class MainController < ApplicationController
   layout 'main'
 
   def index
-    @main_props = { appName: 'Real Estate Management' }
+    @main_props = { currentUser: current_user , userSession: user_session }
   end
 end

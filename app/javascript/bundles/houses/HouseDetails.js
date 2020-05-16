@@ -1,8 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { map } from 'lodash';
-import { Container, Row, Col, Button, ButtonGroup, Form, FormGroup, Label, Input, Card, CardHeader, CardBody, CardTitle, CardText } from 'reactstrap';
-import { Carousel } from 'react-responsive-carousel';
+import { Container, Row, Col, Button, ButtonGroup, FormGroup, Card, CardHeader, CardBody, CardText } from 'reactstrap';
 import ViewerImages from '../support/ViewerImages'
 
 export default class AssetDetails extends React.Component {
@@ -24,12 +21,11 @@ export default class AssetDetails extends React.Component {
 
   buyAsset(){
     const { match: { params: { id } } } = this.props;
-
     fetch(`/api/v1/assets/House/${id}/buy`, {
       method: 'post',
       body: null,
       headers: { 'Content-Type': 'application/json' },
-    }).then((response) => {
+    }).then(() => {
       this.props.history.push('/')
     });
   }
@@ -74,10 +70,23 @@ export default class AssetDetails extends React.Component {
                   </div>
                 </CardText>
                 <FormGroup check row>
-                  <ButtonGroup size="sm">
-                    <Button size="sm" color="primary" onClick={()=>{this.props.history.push('/')}}>Back</Button>
-                    <Button size="sm" color="success" onClick={this.buyAsset}>Buy</Button>
-                  </ButtonGroup>
+                { asset.buyed ? (
+                    <ButtonGroup size="sm">
+                      <Button size="sm" color="primary" onClick={()=>{this.props.history.push('/')}}>
+                        <i class="fa fa-arrow-left"></i>
+                      </Button>
+                    </ButtonGroup>
+                  ) : (
+                    <ButtonGroup size="sm">
+                      <Button size="sm" color="primary" onClick={()=>{this.props.history.push('/')}}>
+                        <i class="fa fa-arrow-left"></i>
+                      </Button>
+                      <Button size="sm" color="success" onClick={this.buyAsset}>
+                        <i class="fa fa-euro"></i>{' '}Buy
+                      </Button>
+                    </ButtonGroup>
+                  )
+                }
                 </FormGroup>
               </CardBody>
             </Card>

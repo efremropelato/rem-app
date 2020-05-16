@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import {cloneDeep} from 'lodash';
 import UploaderImage from '../support/UploaderImage';
 import ViewerImages from '../support/ViewerImages';
 
-import { Container, Row, Col, Button, ButtonGroup, Form, FormGroup, Label, Input, Card, CardHeader, CardBody, CardTitle, CardText } from 'reactstrap';
+import { Container, Row, Col, Button, ButtonGroup, Form, FormGroup, Label, Input, Card, CardHeader, CardBody, CardText } from 'reactstrap';
 import CurrencyInput from 'react-currency-input';
 
 export default class UpdateAsset extends React.Component {
@@ -19,6 +17,7 @@ export default class UpdateAsset extends React.Component {
       sqmt: 0,
       price: 0
     }
+    this.assetList = this.assetList.bind(this)
   }
 
 
@@ -42,16 +41,20 @@ export default class UpdateAsset extends React.Component {
     this.setState({ images: event.target.files });
   }
 
-  updateAssetRequest = (event) => {
+  updateAssetRequest = () => {
     const data = cloneDeep(this.state);
     delete data.uploadedImages
     fetch(`/api/v1/houses/${this.state.id}`, {
       method: 'put',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' },
-    }).then((response) => {
-      this.props.history.push('/')
+    }).then(() => {
+      this.assetList()
     });
+  }
+
+  assetList(){
+    this.props.history.push('/')
   }
 
   render() {
@@ -130,6 +133,7 @@ export default class UpdateAsset extends React.Component {
             <ViewerImages images={this.state.uploadedImages} />
             <UploaderImage
               assetId={this.state.id}
+              assetList={this.assetList}
               url={`/api/v1/assets/House/${this.state.id}/images`} />
           </Col>
         </Row>

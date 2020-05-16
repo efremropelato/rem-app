@@ -1,15 +1,15 @@
 # Example Auth
-# admin = User.new
-# admin.email = 'admin@rem.test'
-# admin.password = 'password'
-# admin.password_confirmation = 'password'
-# admin.save!
-# 
-# user = User.new
-# user.email = 'user@rem.test'
-# user.password = 'password'
-# user.password_confirmation = 'password'
-# user.save!
+admin = User.new
+admin.email = 'admin@rem.test'
+admin.password = 'password'
+admin.password_confirmation = 'password'
+admin.save!
+
+user = User.new
+user.email = 'user@rem.test'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.save!
 
 SAMPLE_HOUSE = [{
   owner: 'Aldo Ropelato',
