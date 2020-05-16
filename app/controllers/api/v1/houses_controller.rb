@@ -28,6 +28,6 @@ class Api::V1::HousesController < ApplicationController
       private
     
       def house_params
-        params.permit(:owner, :address, :sqmt, :price, :rooms, :floors, :air_cond)
+        params.permit(:owner, :address, :sqmt, :price, :rooms, :floors, :air_cond, images: [])
       end
 end

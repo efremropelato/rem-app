@@ -1,4 +1,5 @@
 class House < Asset
+  has_many_attached :images
   self.primary_key = "id"
   def self.base_class
     self

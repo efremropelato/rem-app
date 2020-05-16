@@ -7,13 +7,15 @@ import {
 import Routes from './Routes';
 
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import {
-  Navbar, NavbarBrand, Nav,
+  Navbar, NavbarBrand, Container, Nav,
   NavItem,
   NavLink, UncontrolledDropdown, ButtonGroup, ButtonDropdown, Dropdown, DropdownToggle, DropdownMenu, DropdownItem
 } from 'reactstrap';
+
+import 'react-toastify/dist/ReactToastify.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends React.Component {
@@ -31,17 +33,14 @@ export default class App extends React.Component {
           pauseOnFocusLoss
           draggable
           pauseOnHover={false} />
-        <Navbar color="light" light expand="md" className="clearfix">
+        <Navbar color="primary" dark expand="md" className="clearfix">
           <NavbarBrand href="/">{this.props.appName}</NavbarBrand>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/">Home</NavLink>
-            </NavItem>
-          </Nav>
         </Navbar>
-        <Router>
-          <Routes />
-        </Router>
+        <Container style={{paddingTop: '10px'}}>
+          <Router>
+            <Routes />
+          </Router>
+        </Container>
       </div >
     );
   }

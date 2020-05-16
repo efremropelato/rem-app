@@ -34,64 +34,70 @@ export default class CreateAsset extends React.Component {
     const { owner, address, sqmt, price, rooms, floors, air_cond } = this.state;
     return (
       <Container>
-
-        <Form>
-          <h3>Create new House</h3>
-          <FormGroup>
-            <Label for="owner">Owner</Label>
-            <Input type='text' name="owner" id="owner" placeholder="Owner..."
-              defaultValue={owner}
-              onChange={this.handleInputChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="address">Address</Label>
-            <Input type='text' name="address" id="address" placeholder="Address..."
-              defaultValue={address}
-              onChange={this.handleInputChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="sqmt">SQMT</Label>
-            <Input type='number' name="sqmt" id="sqmt"
-              defaultValue={sqmt}
-              onChange={this.handleInputChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="price">Price (€)</Label>
-            <Input type='number' name="price" id="price"
-              defaultValue={price}
-              onChange={this.handleInputChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="rooms">Rooms</Label>
-            <Input type='number' name="rooms" id="rooms"
-              defaultValue={rooms}
-              onChange={this.handleInputChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="floors">Floors</Label>
-            <Input type='number' name="floors" id="floors"
-              defaultValue={floors}
-              onChange={this.handleInputChange} />
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input type='checkbox' name="air_cond" id="air_cond"
-                defaultChecked={air_cond}
-                checked={air_cond}
-                onChange={this.handleInputChange}
-              />{' '}
+        <Row>
+          <Col>
+            <Form>
+              <h3>Create new House</h3>
+              <FormGroup>
+                <Label for="owner">Owner</Label>
+                <Input type='text' name="owner" id="owner" placeholder="Owner..."
+                  defaultValue={owner}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="address">Address</Label>
+                <Input type='text' name="address" id="address" placeholder="Address..."
+                  defaultValue={address}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="sqmt">SQMT</Label>
+                <Input type='number' name="sqmt" id="sqmt"
+                  defaultValue={sqmt}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="price">Price (€)</Label>
+                <Input type='number' name="price" id="price"
+                  defaultValue={price}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="rooms">Rooms</Label>
+                <Input type='number' name="rooms" id="rooms"
+                  defaultValue={rooms}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="floors">Floors</Label>
+                <Input type='number' name="floors" id="floors"
+                  defaultValue={floors}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type='checkbox' name="air_cond" id="air_cond"
+                    defaultChecked={air_cond}
+                    checked={air_cond}
+                    onChange={this.handleInputChange}
+                  />{' '}
               Air Cond.
         </Label>
-          </FormGroup>
-          <FormGroup check row>
-            <Col sm={{ size: 10, offset: 2 }}>
-            <Link className="btn btn-primary btn-sm" to="/">
-                Back
+              </FormGroup>
+              <FormGroup check row>
+                <Col sm={{ size: 10, offset: 2 }}>
+                  <Link className="btn btn-primary btn-sm" to="/">
+                    Back
               </Link>
-              <Button size="sm" color="success" onClick={this.createAssetRequest}>Create</Button>
-            </Col>
-          </FormGroup>
-        </Form>
+                  <Button size="sm" color="success" onClick={this.createAssetRequest}>Create</Button>
+                </Col>
+              </FormGroup>
+            </Form>
+          </Col>
+          <Col>
+
+          </Col>
+        </Row>
       </Container>
     );
   }

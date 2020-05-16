@@ -52,7 +52,6 @@ export default (props) => {
                 exact
                 component={UpdateHouse}
             />
-
             <Route
                 path="/complex_buildings/new"
                 exact

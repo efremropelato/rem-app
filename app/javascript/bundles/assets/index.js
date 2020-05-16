@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import {map} from 'lodash';
+import {map,orderBy} from 'lodash';
 
-import { Container, Row, Col, Table, Button, ButtonGroup, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Container, Table, Button, ButtonGroup, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 export default class AssetsList extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class AssetsList extends React.Component {
 
   handleDelete = (assetId, assetType) => {
     fetch(`/api/v1/${assetType}/${assetId}`, { method: 'delete' }).
-      then((response) => {
+      then(() => {
         toast.success("Asset deleted successfully!");
         this.fetchAssetsList();
       });
@@ -79,13 +79,11 @@ export default class AssetsList extends React.Component {
           </thead>
           <tbody>
             {
-              map(_.orderBy(assets, ['created_at'], ['asc']), (asset) => {
+              map(orderBy(assets, ['created_at'], ['asc']), (asset) => {
                 return (
                   <tr key={asset.id}>
                     <td>
-                      <Link className="btn btn-primary btn-sm" to={`/${assetType(asset.type)}/${asset.id}`}>
                         {asset.id}
-                      </Link>
                     </td>
                     <td>{asset.type}</td>
                     <td>{asset.owner}</td>
@@ -94,6 +92,9 @@ export default class AssetsList extends React.Component {
                     <td>{asset.price}</td>
                     <td>
                       <ButtonGroup>
+                      <Link className="btn btn-primary btn-sm" to={`/${assetType(asset.type)}/${asset.id}`}>
+                        Details
+                      </Link>
                         <Link className="btn btn-warning btn-sm" to={`/${assetType(asset.type)}/${asset.id}/edit`}>
                           Edit
                         </Link>
