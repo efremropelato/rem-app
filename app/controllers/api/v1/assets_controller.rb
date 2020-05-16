@@ -33,9 +33,7 @@ class Api::V1::AssetsController < ApplicationController
 
   def buyasset
     asset = @klass.find(params[:id])
-    asset.update(buyed: true)
-    ActionCable.server.broadcast('assets_channel', 
-      {'action':'buy', 'type': params[:klassName], 'asset': params[:id], 'data': asset.to_json })
+    VeryLongTaskJob.perform_later(params[:klassName], params[:id], asset)
     head :ok
   end
 
