@@ -9,11 +9,14 @@ import actionCable from 'actioncable';
 
 import { ToastContainer, toast } from 'react-toastify';
 
-import { Navbar, NavbarBrand, Container } from 'reactstrap';
+import { Navbar, NavbarBrand, NavbarText, Container, Button } from 'reactstrap';
 
 import 'react-toastify/dist/ReactToastify.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
+
+import currentUser from './bundles/support/currentUser'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -45,6 +48,7 @@ export default class App extends React.Component {
             break;
           case 'buy':
             msg = `${message.type} [id:${message.asset}] purchased!`
+            currentUser.emit('change');
             break;
           default:
             break;
@@ -55,6 +59,9 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    currentUser.setUser(this.props.currentUser);
+    console.log('currentUser', this.props.currentUser);
+    console.log('userSession', this.props.userSession);
   }
 
   render() {
@@ -71,9 +78,6 @@ export default class App extends React.Component {
           pauseOnFocusLoss
           draggable
           pauseOnHover={false} />
-        <Navbar color="primary" dark expand="md" className="clearfix">
-          <NavbarBrand href="/">{this.props.appName}</NavbarBrand>
-        </Navbar>
         <Container style={{ paddingTop: '10px' }}>
           <Router>
             <Routes />

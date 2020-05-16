@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-import { Container, Row, Col, Button, ButtonGroup, Form, FormGroup, Label, Input, Card, CardHeader, CardBody, CardTitle, CardText } from 'reactstrap';
-import { map, forEach, concat } from 'lodash';
+import { Button, Form, Input, Card, CardHeader, CardBody, CardText } from 'reactstrap';
+import { map, forEach } from 'lodash';
 
 class ImageUpload extends React.Component {
   constructor(props) {
@@ -23,8 +23,8 @@ class ImageUpload extends React.Component {
     fetch(this.props.url, {
       method: 'post',
       body: formData
-    }).then((response) => {
-      this.props.history.push('/')
+    }).then(() => {
+      this.props.assetList();
       toast.success("Asset updated successfully!");
     });
   }

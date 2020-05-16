@@ -1,14 +1,14 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default class CreateAsset extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        owner: '',
-        address: '',
-        sqmt: 0, 
-        price: 0
+      owner: '',
+      address: '',
+      sqmt: 0,
+      price: 0
     }
   }
 
@@ -16,14 +16,14 @@ export default class CreateAsset extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  createAssetRequest = (event) => {
+
+  createAssetRequest = () => {
     console.log('this.state', this.state);
     fetch('/api/v1/complex_buildings', {
-      method: 'asset',
+      method: 'post',
       body: JSON.stringify(this.state),
       headers: { 'Content-Type': 'application/json' },
-    }).then((response) => {
-      alert('Asset created successfully');
+    }).then(() => {
       this.props.history.push('/')
     });
   }
@@ -31,55 +31,53 @@ export default class CreateAsset extends React.Component {
   render() {
     const {owner, address, sqmt, price, units } = this.state;
     return (
-      <div>
-        <h3>New Asset</h3>
-        <div>
-          <label>Owner: </label>
-          <input
-            type='text'
-            name='owner'
-            value={owner}
-            onChange={this.handleInputChange}
-            />
-        </div>
-        <div>
-          <label>Address: </label>
-          <input
-            type='text'
-            name='address'
-            value={address}
-            onChange={this.handleInputChange}
-            />
-        </div>
-        <div>
-          <label>SQMT: </label>
-          <input
-            type='text'
-            name='sqmt'
-            value={sqmt}
-            onChange={this.handleInputChange}
-            />
-        </div>
-        <div>
-          <label>Price (€): </label>
-          <input
-            type='text'
-            name='price'
-            value={price}
-            onChange={this.handleInputChange}
-            />
-        </div>
-        <div>
-          <label>Units: </label>
-          <input
-            type='text'
-            name='units'
-            value={units}
-            onChange={this.handleInputChange}
-            />
-        </div>
-        <button onClick={this.createAssetRequest}>Create</button>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <Form>
+              <h3>Create new Complex Building</h3>
+              <FormGroup>
+                <Label for="owner">Owner</Label>
+                <Input type='text' name="owner" id="owner" placeholder="Owner..."
+                  defaultValue={owner}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="address">Address</Label>
+                <Input type='text' name="address" id="address" placeholder="Address..."
+                  defaultValue={address}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="sqmt">SQMT</Label>
+                <Input type='number' name="sqmt" id="sqmt"
+                  defaultValue={sqmt}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="price">Price (€)</Label>
+                <Input type='number' name="price" id="price"
+                  defaultValue={price}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="units">Units</Label>
+                <Input type='number' name="units" id="units"
+                  defaultValue={units}
+                  onChange={this.handleInputChange} />
+              </FormGroup>
+              <FormGroup check row>
+                <Col sm={{ size: 10, offset: 2 }}>
+                  <Button size="sm" color="primary" onClick={() => { this.props.history.push('/') }}>Back</Button>
+                  <Button size="sm" color="success" onClick={this.createAssetRequest}>Create</Button>
+                </Col>
+              </FormGroup>
+            </Form>
+          </Col>
+          <Col>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

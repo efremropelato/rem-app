@@ -10,6 +10,7 @@
     "actioncable": "^5.2.4-2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.5.0",
+    "font-awesome": "^4.7.0",
     "lodash": "^4.17.15",
     "moment": "^2.25.3",
     "prop-types": "^15.7.2",

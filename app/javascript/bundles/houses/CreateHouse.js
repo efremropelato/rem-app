@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default class CreateAsset extends React.Component {
   constructor(props) {
@@ -18,13 +16,13 @@ export default class CreateAsset extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  createAssetRequest = (event) => {
+  createAssetRequest = () => {
     console.log('this.state', this.state);
     fetch('/api/v1/houses', {
       method: 'post',
       body: JSON.stringify(this.state),
       headers: { 'Content-Type': 'application/json' },
-    }).then((response) => {
+    }).then(() => {
       this.props.history.push('/')
     });
   }

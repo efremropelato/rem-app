@@ -3,10 +3,22 @@
   <head>
     <title>Real Estate Manamgement</title>
     <%= csrf_meta_tags %>
-    <%= javascript_pack_tag 'hello-world-bundle' %>
+    <%= javascript_pack_tag 'main-bundle' %>
   </head>
-
   <body>
+    <nav class="clearfix navbar navbar-expand-md navbar-dark bg-primary">
+      <a href="/" class="navbar-brand">Real Estate Management</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"></ul>
+        <form class="form-inline my-2 my-lg-0">
+          <% if user_signed_in? %>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn btn-success my-2 my-sm-0') %>        
+          <% else %>
+            <%= link_to('Login', new_user_session_path) %>  
+          <% end %>
+        </form>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

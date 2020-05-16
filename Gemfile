@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # React Rails integration
 gem 'react_on_rails'
 gem 'mini_racer', platforms: :ruby
+
+# Authentication
+gem 'devise'

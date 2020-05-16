@@ -1,54 +1,81 @@
+# Example Auth
+admin = User.new
+admin.email = 'admin@rem.test'
+admin.password = 'password'
+admin.password_confirmation = 'password'
+admin.save!
+
+user = User.new
+user.email = 'user@rem.test'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.save!
+
 SAMPLE_HOUSE = [{
-  owner: 'Aldo Ropelato',
-  address: 'Via Magni 19, Inverigo 22044 (CO) ',
+  owner: 'Mario Rossi',
+  address: 'Via Adriano, 110 - 20128 Milano (MI)',
   sqmt: 120,
   price: 140000.00,
   rooms: 4,
   floors: 2,
   air_cond: false
-},{
-    owner: 'Efrem Ropelato',
-  address: 'Via G. Parini 13, Monguzzo 22040 (CO) ',
-  sqmt: 150,
-  price: 175000.00,
-  rooms: 6,
-  floors: 3,
-  air_cond: false
-}, {
-    owner: 'Roberta Giussani',
-  address: 'Via G. Parini 13, Monguzzo 22040 (CO) ',
-  sqmt: 110,
-  price: 120000.00,
-  rooms: 6,
-  floors: 2,
-  air_cond: true
 }]
 
 SAMPLE_COMPLEX_BUILDING = [{
-  owner: 'Enrica Corti',
-  address: 'Via Magni 14, Inverigo 22044 (CO) ',
+  owner: 'Mario Corti',
+  address: 'Via Gregorio VII, 53 - 00165 Roma (RM)',
   sqmt: 980,
-  price: 790000.00,
+  price: 790_000.00,
   units: 8
 }]
 
 SAMPLE_COMMECIAL_UNIT = [{
-  owner: 'Mario Tanzi',
-  address: 'Via Magni 54, Inverigo 22044 (CO) ',
+  owner: 'Luca Verdi',
+  address: 'Via Milazzo, 11/A - 40121 Bologna (BO)',
   sqmt: 180,
-  price: 290000.00,
+  price: 290_000.00,
   shops: 2,
   parking: 6
 }]
 
 SAMPLE_HOUSE.each do |house|
   House.create(house)
+  House.first.images.attach(
+    io: File.open('./db/images/house01.jpeg'),
+    filename: 'house01.jpeg',
+    content_type: 'image/jpeg'
+  )
+  House.first.images.attach(
+    io: File.open('./db/images/house02.jpeg'),
+    filename: 'house02.jpeg',
+    content_type: 'image/jpeg'
+  )
+  House.first.images.attach(
+    io: File.open('./db/images/house03.jpeg'),
+    filename: 'house03.jpeg',
+    content_type: 'image/jpeg'
+  )
 end
 
 SAMPLE_COMPLEX_BUILDING.each do |complex|
   ComplexBuilding.create(complex)
+  ComplexBuilding.first.images.attach(
+    io: File.open('./db/images/building01.png'),
+    filename: 'building01.png',
+    content_type: 'image/png'
+  )
 end
 
 SAMPLE_COMMECIAL_UNIT.each do |commecial|
   CommecialUnit.create(commecial)
+  CommecialUnit.first.images.attach(
+    io: File.open('./db/images/commecial01.jpeg'),
+    filename: 'commecial01.jpeg',
+    content_type: 'image/jpeg'
+  )
+  CommecialUnit.first.images.attach(
+    io: File.open('./db/images/commecial02.jpg'),
+    filename: 'commecial02.jpeg',
+    content_type: 'image/jpeg'
+  )
 end
