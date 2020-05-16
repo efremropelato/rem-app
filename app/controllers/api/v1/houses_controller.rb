@@ -6,6 +6,8 @@ class Api::V1::HousesController < ApplicationController
     
       def create
         house = House.create(house_params)
+        ActionCable.server.broadcast('assets_channel', 
+          {'action':'create', 'type': 'House', 'asset': house.id, 'data': house.to_json })
         render json: house
       end
     
@@ -17,11 +19,15 @@ class Api::V1::HousesController < ApplicationController
       def update
         house = House.find(params[:id])
         house.update(house_params)
+        ActionCable.server.broadcast('assets_channel', 
+          {'action':'update', 'type': 'House', 'asset': params[:id], 'data': house.to_json })
         render json: house
       end
     
       def destroy
         House.destroy(params[:id])
+        ActionCable.server.broadcast('assets_channel', 
+          {'action':'destroy', 'type': 'House', 'asset': params[:id], 'data': nil })
         head :ok
       end
     

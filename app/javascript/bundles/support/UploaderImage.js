@@ -24,7 +24,7 @@ class ImageUpload extends React.Component {
       method: 'post',
       body: formData
     }).then((response) => {
-      location.href = '/';
+      this.props.history.push('/')
       toast.success("Asset updated successfully!");
     });
   }

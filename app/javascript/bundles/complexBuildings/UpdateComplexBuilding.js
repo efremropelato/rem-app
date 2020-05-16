@@ -30,7 +30,7 @@ export default class UpdateAsset extends React.Component {
       headers: { 'Content-Type': 'application/json' },
     }).then((response) => {
       alert('Asset updated successfully');
-      location.href = '/';
+      this.props.history.push('/')
     });
   }
 

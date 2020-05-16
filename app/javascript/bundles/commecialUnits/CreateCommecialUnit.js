@@ -24,7 +24,7 @@ export default class CreateAsset extends React.Component {
       headers: { 'Content-Type': 'application/json' },
     }).then((response) => {
       alert('Asset created successfully');
-      location.href = '/';
+      this.props.history.push('/')
     });
   }
 

@@ -1,5 +1,5 @@
 class Api::V1::AssetsController < ApplicationController
-  before_action :set_klass, only: [:getimages, :postimages]
+  before_action :set_klass, only: [:getimages, :postimages, :buyasset]
 
   def index
     render json: Asset.all
@@ -31,6 +31,12 @@ class Api::V1::AssetsController < ApplicationController
     head :ok
   end
 
+  def buyasset
+    asset = @klass.find(params[:id])
+    VeryLongTaskJob.perform_later(params[:klassName], params[:id], asset)
+    head :ok
+  end
+
   def update
     asset = Asset.find(params[:id])
     asset.update(asset_params)
@@ -49,6 +55,6 @@ class Api::V1::AssetsController < ApplicationController
   end
 
   def asset_params
-    params.permit(:owner, :address, :sqmt, :price)
+    params.permit(:owner, :address, :sqmt, :price, :buyed)
   end
 end

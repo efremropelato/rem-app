@@ -1181,6 +1181,11 @@ acorn@^7.0.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.2.0.tgz#17ea7e40d7c8640ff54a694c889c26f31704effe"
   integrity sha512-apwXVmYVpQ34m/i71vrApRrRKCWQnZZF1+npOD0WV5xZFfwWOmKGQ2RWlfdy9vWITsenisM8M0Qeq8agcFHNiQ==
 
+actioncable@^5.2.4-2:
+  version "5.2.4-2"
+  resolved "https://registry.yarnpkg.com/actioncable/-/actioncable-5.2.4-2.tgz#3f58efd0704a68dd3f096810d3d344c0d92ac81c"
+  integrity sha512-tq2WNngBruV7uxCRCHTg+DDdrgG1ynSymV+2m8ocfnD0EiUx8C/BMuf/xsnfKAhNWZsKvcPZsIUGbVSjhGwhuA==
+
 aggregate-error@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/aggregate-error/-/aggregate-error-3.0.1.tgz#db2fe7246e536f40d9b5442a39e117d7dd6a24e0"
@@ -5798,6 +5803,11 @@ module-deps@^4.0.8:
     through2 "^2.0.0"
     xtend "^4.0.0"
 
+moment@^2.25.3:
+  version "2.25.3"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.25.3.tgz#252ff41319cf41e47761a1a88cab30edfe9808c0"
+  integrity sha512-PuYv0PHxZvzc15Sp8ybUCoQ+xpyPWvjOuK72a5ovzp2LI32rJXOiIfyoFoYvG3s6EwwrdkMyWuRiEHSZRLJNdg==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -7492,6 +7502,13 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-number-format@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-4.4.1.tgz#d5614dd25edfc21ed48b97356213440081437a94"
+  integrity sha512-ZGFMXZ0U7DcmQ3bSZY3FULOA1mfqreT9NIMYZNoa/ouiSgiTQiYA95Uj2KN8ge6BRr+ghA5vraozqWqsHZQw3Q==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-on-rails@11.3.0:
   version "11.3.0"
