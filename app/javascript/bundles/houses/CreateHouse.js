@@ -25,8 +25,7 @@ export default class CreateAsset extends React.Component {
       body: JSON.stringify(this.state),
       headers: { 'Content-Type': 'application/json' },
     }).then((response) => {
-      location.href = '/';
-      toast.success("Asset created successfully!");
+      this.props.history.push('/')
     });
   }
 
@@ -86,9 +85,7 @@ export default class CreateAsset extends React.Component {
               </FormGroup>
               <FormGroup check row>
                 <Col sm={{ size: 10, offset: 2 }}>
-                  <Link className="btn btn-primary btn-sm" to="/">
-                    Back
-              </Link>
+                  <Button size="sm" color="primary" onClick={() => { this.props.history.push('/') }}>Back</Button>
                   <Button size="sm" color="success" onClick={this.createAssetRequest}>Create</Button>
                 </Col>
               </FormGroup>

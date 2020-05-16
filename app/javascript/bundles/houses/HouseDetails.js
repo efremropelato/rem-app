@@ -9,6 +9,8 @@ export default class AssetDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = { asset: {}, images: [] };
+
+    this.buyAsset = this.buyAsset.bind(this)
   }
 
   componentDidMount() {
@@ -17,6 +19,18 @@ export default class AssetDetails extends React.Component {
     const i = fetch(`/api/v1/assets/House/${id}/images`).then((response) => response.json())
     Promise.all([a, i]).then((data) => {
       this.setState({ asset: data[0], images: data[1] })
+    });
+  }
+
+  buyAsset(){
+    const { match: { params: { id } } } = this.props;
+
+    fetch(`/api/v1/assets/House/${id}/buy`, {
+      method: 'post',
+      body: null,
+      headers: { 'Content-Type': 'application/json' },
+    }).then((response) => {
+      this.props.history.push('/')
     });
   }
 
@@ -61,8 +75,8 @@ export default class AssetDetails extends React.Component {
                 </CardText>
                 <FormGroup check row>
                   <ButtonGroup size="sm">
-                    <Link className="btn btn-primary btn-sm" to="/">Back</Link>
-                    <Button size="sm" color="success" onClick={()=>{}}>Buy</Button>
+                    <Button size="sm" color="primary" onClick={()=>{this.props.history.push('/')}}>Back</Button>
+                    <Button size="sm" color="success" onClick={this.buyAsset}>Buy</Button>
                   </ButtonGroup>
                 </FormGroup>
               </CardBody>

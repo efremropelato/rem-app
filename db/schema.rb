@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_152422) do
     t.integer "sqmt"
     t.decimal "price"
     t.string "type"
+    t.boolean "buyed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_152422) do
     t.integer "sqmt"
     t.decimal "price"
     t.string "type"
+    t.boolean "buyed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shops"
@@ -67,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_152422) do
     t.integer "sqmt"
     t.decimal "price"
     t.string "type"
+    t.boolean "buyed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "units"
@@ -79,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_152422) do
     t.integer "sqmt"
     t.decimal "price"
     t.string "type"
+    t.boolean "buyed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "rooms"

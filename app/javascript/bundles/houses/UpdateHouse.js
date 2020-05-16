@@ -50,8 +50,7 @@ export default class UpdateAsset extends React.Component {
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' },
     }).then((response) => {
-      location.href = '/';
-      toast.success("Asset updated successfully!");
+      this.props.history.push('/')
     });
   }
 
@@ -119,7 +118,7 @@ export default class UpdateAsset extends React.Component {
                   </CardText>
                   <FormGroup check row>
                     <ButtonGroup size="sm">
-                      <Link className="btn btn-primary btn-sm" to="/">Back</Link>
+                      <Button size="sm" color="primary" onClick={()=>{this.props.history.push('/')}}>Back</Button>
                       <Button size="sm" color="success" onClick={this.updateAssetRequest}>Update</Button>
                     </ButtonGroup>
                   </FormGroup>

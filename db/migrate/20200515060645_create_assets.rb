@@ -6,6 +6,7 @@ class CreateAssets < ActiveRecord::Migration[6.0]
       t.integer :sqmt
       t.decimal :price
       t.string :type
+      t.boolean :buyed, default: false
 
       t.timestamps
     end
