@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2020_05_16_112916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "timescaledb"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
